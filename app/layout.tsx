@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Background from "@/components/background";
 import { Toaster } from "@/components/ui/sonner";
+import Footer from "@/components/ui/footer";
 
 export const metadata: Metadata = {
   title: "Sceneify - add cinematic subtitles to images",
@@ -23,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="relative max-w-7xl h-screen mx-auto w-full bg-background flex flex-col antialiased">
+      <body className="relative max-w-7xl min-h-screen mx-auto w-full bg-background flex flex-col antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Background />
           <Header />
           {children}
+          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>

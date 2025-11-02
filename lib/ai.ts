@@ -52,7 +52,9 @@ export async function describeImage(imageBuffer: Buffer): Promise<PollinationsRe
         content: [
           {
             type: "text",
-            text: "Describe this image in cinematic detail as if it were a movie scene.",
+            text: `Describe this image in cinematic detail as if it were a movie scene.
+                  Come up with conversation snippets of characters in the scene as well 
+                  as the overall atmosphere.`,
           },
           {
             type: "image_url",
@@ -85,7 +87,10 @@ export async function describeImage(imageBuffer: Buffer): Promise<PollinationsRe
 export async function generateSubtitle(description: string): Promise<GeminiResponse> {
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
-    contents: `Generate a short, emotional subtitle (max 15 words) inspired by this scene description: "${description}". Return only the line.`
+    contents: `Generate a single, highly cinematic subtitle (max 15 words) inspired by this scene description: "${description}".
+            The subtitle should be emotional, intriguing, or metaphorical, and feel like it belongs on a movie poster or an official trailer.
+            Come up with a character's dialogue and if it is then must start with a hyphen ("-"). Otherwise, it should be a descriptive line.
+            Return ONLY the one-line subtitle or dialogue, with no extra text, explanations, or quotes.`
   });
   return response;
 }
