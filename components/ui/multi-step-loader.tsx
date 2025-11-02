@@ -50,7 +50,7 @@ const LoaderCore = ({
     <div className="flex relative justify-start max-w-xl mx-auto flex-col mt-40">
       {loadingStates.map((loadingState, index) => {
         const distance = Math.abs(index - value);
-        const opacity = Math.max(1 - distance * 0.9, 0);
+        const opacity = Math.max(1 - distance * 0.1, 0);
 
         return (
           <motion.div
@@ -92,7 +92,7 @@ const LoaderCore = ({
 export const MultiStepLoader = ({
   loadingStates,
   loading,
-  duration = 3000,
+  duration = 3500,
   loop = false,
 }: {
   loadingStates: LoadingState[];
@@ -132,13 +132,13 @@ export const MultiStepLoader = ({
           exit={{
             opacity: 0,
           }}
-          className="w-full h-full fixed inset-0 z-100 flex items-center justify-center backdrop-blur-2xl"
+          className="w-full h-full fixed inset-0 z-100 flex items-center justify-center dark:backdrop-blur-2xl"
         >
           <div className="h-96  relative">
             <LoaderCore value={currentState} loadingStates={loadingStates} />
           </div>
 
-          <div className="bg-linear-to-t inset-x-0 z-20 bottom-0 bg-white dark:bg-black h-full absolute mask-[radial-gradient(900px_at_center,transparent_30%,white)]" />
+          <div className="bg-linear-to-t inset-x-0 z-20 bottom-0 bg-white dark:bg-black h-full absolute mask-[radial-gradient(900px_at_center,transparent_90%,white)] dark:mask-[radial-gradient(900px_at_center,transparent_30%,white)]" />
         </motion.div>
       )}
     </AnimatePresence>

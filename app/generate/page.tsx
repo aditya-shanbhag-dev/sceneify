@@ -41,7 +41,6 @@ export default function Home() {
       toast.warning("Please upload an image first.");
       return;
     }
-    setLoading(true);
 
     const form = new FormData();
 
@@ -53,16 +52,31 @@ export default function Home() {
       if (sub.length > 0) data.subtitle = sub;
       form.append("additionalParams", JSON.stringify(data));
     }
+    if (!advanced || !subtitle) {
+      setLoading(true);
+    }
 
-    const res = await fetch("/api/generate", {
-      method: "POST",
-      body: form,
-    });
+    try {
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        body: form,
+      });
 
-    const blob = await res.blob();
-    const url = URL.createObjectURL(blob);
-    setResultUrl(url);
-    setLoading(false);
+      if (!res.ok) {
+        const errText = await res.text().catch(() => "");
+        throw new Error(errText || "server returned " + res.status);
+      }
+
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      setResultUrl(url);
+      
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
