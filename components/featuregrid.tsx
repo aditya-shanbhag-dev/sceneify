@@ -30,7 +30,7 @@ export default function Featuregrid() {
 
 
     return (
-        <div id="about" className="my-3 mx-auto p-5 gap-3 z-50">
+        <div id="about" className="my-3 mx-auto p-5 z-50">
             <HoverEffect items={cards} />
         </div>
     )

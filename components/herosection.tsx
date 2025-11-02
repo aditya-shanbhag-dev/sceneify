@@ -20,7 +20,7 @@ export default function HeroSection() {
   .flatMap(n => [`/sample/sample${n}.jpg`, `/sample/st_sample${n}.jpg`]);
 
   return (
-    <div id="home" className="my-3 mx-5 flex flex-row p-5 gap-3 z-50">
+    <div id="home" className="my-10 mx-5 flex flex-row p-5 gap-3 z-50">
       <div className="flex flex-col max-w-3xl">
         <div className="relative text-5xl font-bold tracking-tight text-primary mb-5 min-h-35">
           <FlipWords words={phrases} />
