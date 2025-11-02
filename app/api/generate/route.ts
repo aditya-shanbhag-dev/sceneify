@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { createCanvas, loadImage, registerFont } from "canvas";
-import { describeImage, generateSubtitle, } from "@/lib/utils";
+import { describeImage, generateSubtitle, } from "@/lib/ai";
 import path from "path";
 
 // ========== ZOD SCHEMA ==========
@@ -30,7 +30,7 @@ async function addSubtitleToImage(
     font: "HelveticaItalic" | "Arial"
 ): Promise<Buffer> {
 
-    registerFont(path.join(process.cwd(),'/fonts/HelveticaNeue-MediumItalic.ttf'), { family: 'Helvetica Neue' });
+    registerFont(path.join(process.cwd(), '/fonts/HelveticaNeue-MediumItalic.ttf'), { family: 'Helvetica Neue' });
 
     const img = await loadImage(imageBuffer);
     const canvas = createCanvas(img.width, img.height);
@@ -39,7 +39,12 @@ async function addSubtitleToImage(
     ctx.drawImage(img, 0, 0);
 
     // Style setup
-    const fontSize = Math.floor(img.height * 0.035);
+    /* const fontSize = font === "HelveticaItalic"
+        ? Math.floor(img.height * 0.035)
+        : Math.floor(img.height * 0.042); */
+
+    const fontSize = Math.floor(img.height * 0.042);
+
     const colorMap = {
         yellow: "#FFE678",
         white: "#FFFFFF",
@@ -48,7 +53,7 @@ async function addSubtitleToImage(
     const fontFamily =
         font === "HelveticaItalic"
             ? "Helvetica Neue, Helvetica, Arial, sans-serif"
-            : "Arial, sans-serif";
+            : "Arial Black, Arial Bold, Arial, sans-serif";
 
     ctx.font = `${fontSize}px ${fontFamily}`;
     ctx.fillStyle = colorMap[colour];
