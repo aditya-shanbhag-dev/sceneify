@@ -6,16 +6,45 @@ import Background from "@/components/background";
 import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/ui/footer";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Sceneify - add cinematic subtitles to images",
   description: `Sceneify is an AI-powered app that transforms ordinary photos into 
-  cinematic stills - complete with beautifully styled subtitles inspired by iconic 
-  movie dialogue. Upload any image, and Sceneify analyzes its mood, setting, and 
-  emotion using vision-language models. It then generates a short, expressive line 
-  that feels like it belongs in a film - rendered elegantly. Whether it's a quiet 
-  street, a sunset by the sea, or laughter among friends, Sceneify turns every 
-  picture into a story - a frame from a movie that never existed, but should have.`,
+                cinematic stills - complete with beautifully styled subtitles. Upload any image, 
+                and Sceneify analyzes its mood, setting, and emotion to generates a short, expressive
+                line that feels like it belongs in a film - rendered elegantly. Whether it's a quiet 
+                street, a sunset by the sea, or laughter among friends, Sceneify turns every 
+                picture into a story - a frame from a movie that never existed, but should have.`,
+  openGraph: {
+    url: "https://sceneify.vercel.app",
+    type: "website",
+    title: "Sceneify - add cinematic subtitles to images",
+    description: `Sceneify is an AI-powered app that transforms ordinary photos into 
+                  cinematic stills - complete with beautifully styled subtitles. Upload any image, 
+                  and Sceneify analyzes its mood, setting, and emotion to generates a short, expressive
+                  line that feels like it belongs in a film - rendered elegantly. Whether it's a quiet 
+                  street, a sunset by the sea, or laughter among friends, Sceneify turns every 
+                  picture into a story - a frame from a movie that never existed, but should have.`,
+    images: [
+      {
+        url: "https://sceneify.vercel.app/og.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sceneify - add cinematic subtitles to images",
+    description: `Sceneify is an AI-powered app that transforms ordinary photos into 
+                  cinematic stills - complete with beautifully styled subtitles. Upload any image, 
+                  and Sceneify analyzes its mood, setting, and emotion to generates a short, expressive
+                  line that feels like it belongs in a film - rendered elegantly. Whether it's a quiet 
+                  street, a sunset by the sea, or laughter among friends, Sceneify turns every 
+                  picture into a story - a frame from a movie that never existed, but should have.`,
+    images: ["https://sceneify.vercel.app/og.png"],
+  },
 };
+
 
 export default function RootLayout({
   children,
